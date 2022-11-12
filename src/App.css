@@ -2,32 +2,19 @@
     margin: auto;
     display: grid;
     width: 1200px;
-
-    /*поміщаємо контент в строки*/
+    /*пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ*/
     grid-template-areas:
         "h h"
         "n c";
-    /*вказуємо яких розмірів будуть строки (2 строки)*/
+    /*пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (2 пїЅпїЅпїЅпїЅпїЅпїЅ)*/
     grid-template-rows: 60px 1fr;
-    /*розмір колонок (2 колонки)*/
+    /* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ) */
     grid-template-columns: 2fr 10fr;
+    /* grid-gap: 10px; */
 }
-.header {
-    grid-area: h;
-    background-color: green;
-}
-.header img { 
-    width: 80px;
-}
-.nav {
-    grid-area: n;
-    background-color: burlywood;
-}
-.content{
-    grid-area: c;
-    background-color: cornflowerblue;
 
-}
-.contentimg img {
-    width: 500px;
+.app-wrapper-content {
+
+    grid-area: c;
+    background-color: #bfc1cf;;
 }

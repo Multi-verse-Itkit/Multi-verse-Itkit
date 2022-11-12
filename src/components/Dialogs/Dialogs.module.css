@@ -1,0 +1,33 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+
+
+}
+
+.dialogsItems a {
+    padding: 10px;
+    text-decoration: none;
+
+ }
+
+.dialog a.active {
+    color: gold;
+}
+.messages {
+
+    display: flex;
+    flex-direction: column;
+    background: whitesmoke;
+    padding: 10px;
+}
+.newMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-and;
+margin-top: 20%;
+}
+.newMessage textarea {
+    width: 200px;
+}
+
