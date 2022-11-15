@@ -1,0 +1,23 @@
+[33mcommit 3ba02f44f5a62d4ed0f782d3959e0cbafe74328f[m[33m ([m[1;36mHEAD -> [m[1;32malt-history[m[33m)[m
+Author: Oleksandr Kotov <sanyakotov24050524@gmail.com>
+Date:   Mon Nov 14 14:53:56 2022 +0200
+
+    'add Render.js, relocated function renderEntireTree with index js to Render.js, add function render.. in function addPost in State.js file'
+
+[33mcommit 09128751ce547cca56b88d3d9b2590326053e5ff[m
+Author: Oleksandr Kotov <sanyakotov24050524@gmail.com>
+Date:   Sat Nov 12 12:25:35 2022 +0200
+
+    add new file in /Profile
+
+[33mcommit 9703d3b3d3740697489604e4274308a0084369a2[m
+Author: Oleksandr Kotov <sanyakotov24050524@gmail.com>
+Date:   Sat Nov 12 12:23:14 2022 +0200
+
+    add new file in components and add active button in Myposts.js
+
+[33mcommit b7c1e0d4f714277a13021160feedb62dc5e2982a[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Oleksandr Kotov <sanyakotov24050524@gmail.com>
+Date:   Tue Oct 18 11:10:48 2022 +0300
+
+    all file

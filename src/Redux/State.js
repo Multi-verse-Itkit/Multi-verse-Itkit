@@ -7,6 +7,7 @@ let state = {
             {id: 2, message: 'Its my first post', likescount: 10},
             {id: 3, message: 'Its my 2 post', likescount: 11}
         ],
+        newPostText: 'New Post with DATA'
     },
     messagePage: {
         dialogsData: [
@@ -30,13 +31,19 @@ let state = {
         {id:2, img:'https://pyxis.nymag.com/v1/imgs/9f1/596/24c8ddfe02c284db1c9b3dc7d0def5eb85-10-jack-sparrow-pirates-of-the-carribean.rsquare.w330.jpg', name: 'Djek'}
     ]
 }
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id:4,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likescount: 0
-    };
-    state.profilePage.postData.push(newPost);
+                    };
+        state.profilePage.postData.push(newPost);
+    state.profilePage.newPostText='';
+        rerenderEntireTree(state);
+}
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText= newText;
     rerenderEntireTree(state);
 }
 
