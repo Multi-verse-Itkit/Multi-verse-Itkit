@@ -12,8 +12,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 
 const App = (props) => {
-
-    return (
+        return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
@@ -25,7 +24,12 @@ const App = (props) => {
                             addPost={props.addPost}
                             updateNewPostText={props.updateNewPostText}/>}/>
 
-                        <Route path='/Dialogs/*' element={<Dialogs state={props.state.messagePage}/>}/>
+                        <Route path='/Dialogs/*' element={<Dialogs
+                            state={props.state.messagePage}
+                            addMessage={props.addMessage}
+                            updateNewMessageText={props.updateNewMessageText}
+                            newDialogText={props.state.messagePage.newDialogText}
+                        />}/>
                         <Route path='/News' element={<News/>}/>
                         <Route path='/Music' element={<Music/>}/>
                         <Route path='/Settings' element={<Settings/>}/>

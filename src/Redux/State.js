@@ -23,7 +23,8 @@ let state = {
             {message: 'How are you', id: 2},
             {message: 'I`m ok, and you', id: 3},
             {message: 'I am olso satisfied', id: 4}
-        ]
+        ],
+        newDialogText: 'typping'
     },
     sidebar: [
         {
@@ -53,10 +54,25 @@ export let addPost = () => {
     state.profilePage.newPostText = '';
     rerenderEntireTree(state);
 }
-
 export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 }
+
+export let addMessage = () => {
+
+    let newMessage = {
+        id: 5,
+        message: state.messagePage.newDialogText
+    }
+    state.messagePage.messageData.push(newMessage)
+    state.messagePage.newDialogText = '';
+    rerenderEntireTree(state);
+}
+export let updateNewMessageText = (newText) => {
+    state.messagePage.newDialogText = newText;
+    rerenderEntireTree(state)
+}
+
 
 export default state
