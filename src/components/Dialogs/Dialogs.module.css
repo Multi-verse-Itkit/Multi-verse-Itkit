@@ -9,11 +9,12 @@
     padding: 10px;
     text-decoration: none;
 
- }
+}
 
 .dialog a.active {
     color: gold;
 }
+
 .messages {
 
     display: flex;
@@ -21,12 +22,14 @@
     background: whitesmoke;
     padding: 10px;
 }
+
 .newMessage {
     display: flex;
     flex-direction: column;
-    justify-content: flex-and;
-margin-top: 20%;
+    justify-content: flex-end;
+    margin-top: 20%;
 }
+
 .newMessage textarea {
     width: 200px;
 }
