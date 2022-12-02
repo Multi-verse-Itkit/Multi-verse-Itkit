@@ -1,6 +1,8 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_ELEMENT = 'UPDATE-NEW-POST-ELEMENT'
+const ADD_MESSAGE = 'ADD-MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 let store = {
-
-    
     _state: {
         profilePage: {
             postData: [
@@ -56,11 +58,9 @@ let store = {
         this._rerenderEntireTree = observer;
     },
 
-
- 
     dispatch(action) {
        
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
            
             let newPost = {
                 id: 4,
@@ -71,11 +71,11 @@ let store = {
             this._state.profilePage.newPostText = '';
             this._rerenderEntireTree(this._state);
         }
-        else if (action.type === 'UPDATE-NEW-POST-ELEMENT') {
+        else if (action.type === UPDATE_NEW_POST_ELEMENT) {
             this._state.profilePage.newPostText = action.newText;
             this._rerenderEntireTree(this._state);
         }
-        else if (action.type === 'ADD-MESSAGE') {
+        else if (action.type === ADD_MESSAGE) {
             let newMessage = {
                 id: 5,
                 message: this._state.messagePage.newDialogText
@@ -84,13 +84,19 @@ let store = {
             this._state.messagePage.newDialogText = '';
             this._rerenderEntireTree(this._state);
         }
-        else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+        else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.messagePage.newDialogText = action.newText;
             this._rerenderEntireTree(this._state)
         }
 
     }
 }
+// with MyPost.jsx
+export const AddPostActionCreator = () => ({ type: ADD_POST });
+export const UpdateNewPostElementActionCreator = (text) => ({ type: UPDATE_NEW_POST_ELEMENT, newText: text });
+// with Dialogs.jsx
+export const AddMessageActionCreator = () => ({type: ADD_MESSAGE })
+export const UpdateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text})
 
     export default store;
     window.state = store._state;
