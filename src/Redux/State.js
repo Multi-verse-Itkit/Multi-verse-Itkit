@@ -1,29 +1,29 @@
 let store = {
-    rerenderEntireTree() {
-    },
+
+    
     _state: {
         profilePage: {
             postData: [
-                {id: 1, message: 'Hi, how are you', likescount: 5},
-                {id: 2, message: 'Its my first post', likescount: 10},
-                {id: 3, message: 'Its my 2 post', likescount: 11}
+                { id: 1, message: 'Hi, how are you', likescount: 5 },
+                { id: 2, message: 'Its my first post', likescount: 10 },
+                { id: 3, message: 'Its my 2 post', likescount: 11 }
             ],
             newPostText: 'New Post with DATA'
         },
         messagePage: {
             dialogsData: [
-                {id: 1, name: 'Kateryna'},
-                {id: 2, name: 'Ludmyla'},
-                {id: 3, name: 'Anton'},
-                {id: 4, name: 'Evgeniy'},
-                {id: 5, name: 'Oleg'},
-                {id: 6, name: 'Yegor'}
+                { id: 1, name: 'Kateryna' },
+                { id: 2, name: 'Ludmyla' },
+                { id: 3, name: 'Anton' },
+                { id: 4, name: 'Evgeniy' },
+                { id: 5, name: 'Oleg' },
+                { id: 6, name: 'Yegor' }
             ],
             messageData: [
-                {message: 'Hi', id: 1},
-                {message: 'How are you', id: 2},
-                {message: 'I`m ok, and you', id: 3},
-                {message: 'I am olso satisfied', id: 4}
+                { message: 'Hi', id: 1 },
+                { message: 'How are you', id: 2 },
+                { message: 'I`m ok, and you', id: 3 },
+                { message: 'I am olso satisfied', id: 4 }
             ],
             newDialogText: 'typping'
         },
@@ -45,45 +45,55 @@ let store = {
             }
         ]
     },
+    // _rerenderEntireTree() {
+    // },
+
+
     getState() {
         return this._state;
     },
-    addPost() {
-        debugger
-        let newPost = {
-            id: 4,
-            message: this._state.profilePage.newPostText,
-            likescount: 0
-        };
-        this._state.profilePage.postData.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this.rerenderEntireTree(this._state);
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this.rerenderEntireTree(this._state);
-    },
-    addMessage() {
-
-        let newMessage = {
-            id: 5,
-            message: this._state.messagePage.newDialogText
-        }
-        this._state.messagePage.messageData.push(newMessage)
-        this._state.messagePage.newDialogText = '';
-        this.rerenderEntireTree(this._state);
-    },
-    updateNewMessageText(newText) {
-        this._state.messagePage.newDialogText = newText;
-        this.rerenderEntireTree(this._state)
-    },
     subscribe(observer) {
-        this.rerenderEntireTree = observer;
+        this._rerenderEntireTree = observer;
+    },
+
+
+ 
+    dispatch(action) {
+       
+        if (action.type === 'ADD-POST') {
+           
+            let newPost = {
+                id: 4,
+                message: this._state.profilePage.newPostText,
+                likescount: 0
+            };
+            this._state.profilePage.postData.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._rerenderEntireTree(this._state);
+        }
+        else if (action.type === 'UPDATE-NEW-POST-ELEMENT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._rerenderEntireTree(this._state);
+        }
+        else if (action.type === 'ADD-MESSAGE') {
+            let newMessage = {
+                id: 5,
+                message: this._state.messagePage.newDialogText
+            };
+            this._state.messagePage.messageData.push(newMessage)
+            this._state.messagePage.newDialogText = '';
+            this._rerenderEntireTree(this._state);
+        }
+        else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.messagePage.newDialogText = action.newText;
+            this._rerenderEntireTree(this._state)
+        }
+
     }
 }
 
-export default store;
-window.store = store;
+    export default store;
+    window.state = store._state;
 
 
 /*
@@ -167,3 +177,32 @@ export const subscribe = (observer) => {
     rerenderEntireTree = observer;
 }
 */
+
+// addPost() {
+//     let newPost = {
+//         id: 4,
+//         message: this._state.profilePage.newPostText,
+//         likescount: 0
+//     };
+//     this._state.profilePage.postData.push(newPost);
+//     this._state.profilePage.newPostText = '';
+//     this._rerenderEntireTree(this._state);
+// },
+// updateNewPostText(newText) {
+//     this._state.profilePage.newPostText = newText;
+//     this._rerenderEntireTree(this._state);
+// },
+// addMessage() {
+
+//     let newMessage = {
+//         id: 5,
+//         message: this._state.messagePage.newDialogText
+//     }
+//     this._state.messagePage.messageData.push(newMessage)
+//     this._state.messagePage.newDialogText = '';
+//     this._rerenderEntireTree(this._state);
+// },
+// updateNewMessageText(newText) {
+//     this._state.messagePage.newDialogText = newText;
+//     this._rerenderEntireTree(this._state)
+// },

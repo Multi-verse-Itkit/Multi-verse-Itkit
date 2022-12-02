@@ -7,12 +7,10 @@ import Post from "./My posts/Post/Post";
 
 
 const Profile = (props) => {
-    return <div>
+            return <div>
         <ProfileInfo/>
-        <Myposts postData={props.state.postData}
-                 addPost={props.addPost}
-                 newPostText={props.state.newPostText}
-                 updateNewPostText={props.updateNewPostText}
+        <Myposts state={props.state}
+                 dispatch={props.dispatch} 
         />
     </div>
 
