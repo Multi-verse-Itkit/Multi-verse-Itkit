@@ -1,7 +1,7 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_ELEMENT = 'UPDATE-NEW-POST-ELEMENT'
-const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+const SEND_MESSAGE = 'SEND-MESSAGE'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-TEXT'
 let store = {
     _state: {
         profilePage: {
@@ -10,7 +10,7 @@ let store = {
                 { id: 2, message: 'Its my first post', likescount: 10 },
                 { id: 3, message: 'Its my 2 post', likescount: 11 }
             ],
-            newPostText: 'New Post with DATA'
+            newPostText: ''
         },
         messagePage: {
             dialogsData: [
@@ -18,8 +18,8 @@ let store = {
                 { id: 2, name: 'Ludmyla' },
                 { id: 3, name: 'Anton' },
                 { id: 4, name: 'Evgeniy' },
-                { id: 5, name: 'Oleg' },
-                { id: 6, name: 'Yegor' }
+                { id: 5, name: 'Yegor' },
+                { id: 6, name: 'Oleg' }
             ],
             messageData: [
                 { message: 'Hi', id: 1 },
@@ -27,7 +27,7 @@ let store = {
                 { message: 'I`m ok, and you', id: 3 },
                 { message: 'I am olso satisfied', id: 4 }
             ],
-            newDialogText: 'typping'
+            newMessageBody: ''
         },
         sidebar: [
             {
@@ -47,8 +47,8 @@ let store = {
             }
         ]
     },
-    // _rerenderEntireTree() {
-    // },
+    _rerenderEntireTree() {
+    },
 
 
     getState() {
@@ -59,9 +59,13 @@ let store = {
     },
 
     dispatch(action) {
-       
-        if (action.type === ADD_POST) {
-           
+
+        if (action.type === UPDATE_NEW_POST_ELEMENT) {
+            this._state.profilePage.newPostText = action.newText;
+            this._rerenderEntireTree(this._state);
+        }
+        else if (action.type === ADD_POST) {
+
             let newPost = {
                 id: 4,
                 message: this._state.profilePage.newPostText,
@@ -71,35 +75,30 @@ let store = {
             this._state.profilePage.newPostText = '';
             this._rerenderEntireTree(this._state);
         }
-        else if (action.type === UPDATE_NEW_POST_ELEMENT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._rerenderEntireTree(this._state);
-        }
-        else if (action.type === ADD_MESSAGE) {
-            let newMessage = {
-                id: 5,
-                message: this._state.messagePage.newDialogText
-            };
-            this._state.messagePage.messageData.push(newMessage)
-            this._state.messagePage.newDialogText = '';
-            this._rerenderEntireTree(this._state);
-        }
-        else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.messagePage.newDialogText = action.newText;
+
+        else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.messagePage.newMessageBody = action.body;
             this._rerenderEntireTree(this._state)
         }
+        else if (action.type === SEND_MESSAGE) {
+            let body = this._state.messagePage.newMessageBody;
+            this._state.messagePage.messageData.push({ id: 5, message: body });
+            this._state.messagePage.newMessageBody = '';
+            this._rerenderEntireTree(this._state);
+        }
+
 
     }
 }
 // with MyPost.jsx
-export const AddPostActionCreator = () => ({ type: ADD_POST });
-export const UpdateNewPostElementActionCreator = (text) => ({ type: UPDATE_NEW_POST_ELEMENT, newText: text });
+export const addPostActionCreator = () => ({ type: ADD_POST });
+export const updateNewPostElementActionCreator = (text) => ({ type: UPDATE_NEW_POST_ELEMENT, newText: text });
 // with Dialogs.jsx
-export const AddMessageActionCreator = () => ({type: ADD_MESSAGE })
-export const UpdateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text})
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
+export const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, body: body });
 
-    export default store;
-    window.state = store._state;
+export default store;
+window.state = store._state;
 
 
 /*
