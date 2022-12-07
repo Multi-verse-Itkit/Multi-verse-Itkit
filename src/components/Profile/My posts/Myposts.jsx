@@ -1,12 +1,13 @@
 import React from 'react';
 import s from "./Myposts.module.css";
 import Post from './Post/Post';
-import {addPostActionCreator, updateNewPostElementActionCreator} from './../../../Redux//State'
+import { addPostActionCreator, updateNewPostElementActionCreator } from './../../../Redux/profile-reducer'
 
 
 
 const Myposts = (props) => {
-       let postElement = props.state.postData.map(p => <Post message={p.message} likescount={p.likescount} />)
+    
+    let postElement = props.state.postData.map(p => <Post message={p.message} likescount={p.likescount} />)
     let newPostElement = React.createRef();
 
     let addPost = () => {
@@ -15,9 +16,9 @@ const Myposts = (props) => {
     let onPostChange = () => {
         let text = newPostElement.current.value;
         props.dispatch(updateNewPostElementActionCreator(text))
-    
+
     }
-       return <div className={s.postsBlock}>
+    return <div className={s.postsBlock}>
         <h3>My posts</h3>
         <div>
             <div>
