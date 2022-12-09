@@ -1,6 +1,6 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals.js';
-import store from './Redux/State.js'
+import store from './Redux/redux-store'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.js';
@@ -9,6 +9,7 @@ import App from './App.js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let rerenderEntireTree = (state) => {
+    
     root.render(
         <React.StrictMode>
             <App state={state}
@@ -18,7 +19,10 @@ let rerenderEntireTree = (state) => {
         </React.StrictMode>)
 };
 rerenderEntireTree(store.getState());
-store.subscribe(rerenderEntireTree);
+store.subscribe( () => {
+    let state = store.getState();
+    rerenderEntireTree(state)
+});
 
 /*
 export let rerenderEntireTree = () => {
