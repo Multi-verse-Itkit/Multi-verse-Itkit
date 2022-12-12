@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Dialogs from './components/Dialogs/Dialogs.jsx';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Profile from './components/Profile/Profile.jsx';
@@ -20,13 +20,10 @@ const App = (props) => {
                 <div className="app-wrapper-content">
                     <Routes>
                         <Route path='/Profile' element={<Profile
-                            state={props.state}
-                            dispatch={props.dispatch}/>}/>
+                            store={props.store}/>}/>
 
-                        <Route path='/Dialogs/*' element={<Dialogs
-                            store={props.store}
-                            dispatch={props.dispatch}
-                        />}/>
+                        <Route path='/Dialogs/*' element={<DialogsContainer
+                            store={props.store} />}/>
                         <Route path='/News' element={<News/>}/>
                         <Route path='/Music' element={<Music/>}/>
                         <Route path='/Settings' element={<Settings/>}/>

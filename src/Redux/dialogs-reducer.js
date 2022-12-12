@@ -19,9 +19,9 @@ let initialState = {
     newMessageBody: ''
 };
 
-const dialogsReducer = (state=initialState, action) => {
-        console.log(state.messageData)
-        switch (action.type) {
+const dialogsReducer = (state = initialState, action) => {
+    console.log(state.messageData)
+    switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
             state.newMessageBody = action.body;
             return state;
@@ -30,8 +30,8 @@ const dialogsReducer = (state=initialState, action) => {
             state.messageData.push({ id: 5, message: body });
             state.newMessageBody = '';
             return state;
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 
