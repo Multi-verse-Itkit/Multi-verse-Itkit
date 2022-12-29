@@ -4,7 +4,7 @@ import store from './Redux/redux-store'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.js';
-import StoreContext from './StoreContext';
+import {Provider} from 'react-redux';
 
 
 
@@ -14,9 +14,9 @@ let rerenderEntireTree = (state) => {
 
     root.render(
         <React.StrictMode>
-            <StoreContext.Provider value={store}>
+            <Provider store={store}>
                 <App />
-            </StoreContext.Provider>
+            </Provider>
         </React.StrictMode>)
 };
 rerenderEntireTree(store.getState());
